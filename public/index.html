@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmotionDetector - ADSO</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between font-sans">
+
+    <header class="bg-slate-800 p-5 shadow-md border-b border-slate-700">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-wider text-teal-400">🎭 EMOTION<span class="text-white font-light">DETECTOR</span></h1>
+            <span class="bg-teal-500/20 text-teal-300 px-3 py-1 rounded-full text-xs font-semibold">Ficha 3147913 - SENA</span>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto p-4 md:p-8 flex-grow w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        
+        <section class="bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700 space-y-6">
+            <h2 class="text-lg font-semibold text-slate-300 border-b border-slate-700 pb-2">1. Captura de Imagen</h2>
+            
+            <div class="relative bg-slate-950 aspect-video rounded-xl overflow-hidden flex items-center justify-center border-2 border-dashed border-slate-700 group">
+                <video id="video" class="w-full h-full object-cover hidden" autoplay playsinline></video>
+                <div id="camera-placeholder" class="text-center p-4">
+                    <p class="text-slate-400 text-sm">La cámara está desactivada.</p>
+                </div>
+            </div>
+
+            <div class="flex gap-2">
+                <button id="btn-start" class="flex-1 bg-teal-600 hover:bg-teal-500 text-white font-medium py-2.5 px-4 rounded-xl transition duration-200 shadow-md">
+                    Activar Cámara
+                </button>
+                <button id="btn-capture" class="flex-1 bg-slate-700 hover:bg-slate-600 text-white font-medium py-2.5 px-4 rounded-xl transition duration-200 disabled:opacity-50" disabled>
+                    Capturar Rostro
+                </button>
+            </div>
+
+            <div class="relative flex py-2 items-center text-slate-500">
+                <div class="flex-grow border-t border-slate-700"></div>
+                <span class="flex-shrink mx-4 text-xs font-bold uppercase tracking-wider">O también</span>
+                <div class="flex-grow border-t border-slate-700"></div>
+            </div>
+
+            <div class="space-y-2">
+                <label class="block text-sm font-medium text-slate-400">Subir imagen desde el dispositivo:</label>
+                <input type="file" id="file-input" accept="image/*" class="block w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-teal-600 file:text-white hover:file:bg-teal-500 file:cursor-pointer cursor-pointer">
+            </div>
+        </section>
+
+        <section class="bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700 space-y-6 min-h-[420px] flex flex-col justify-between">
+            <div>
+                <h2 class="text-lg font-semibold text-slate-300 border-b border-slate-700 pb-2">2. Análisis de Emoción</h2>
+                
+                <div id="loading" class="hidden text-center py-12 text-teal-400 font-medium">Procesando imagen con IA...</div>
+                <div id="error-message" class="hidden bg-rose-500/10 border border-rose-500 text-rose-300 p-4 rounded-xl text-sm mt-4"></div>
+
+                <div id="results-box" class="hidden mt-6 text-center space-y-6">
+                    <div>
+                        <div id="emoji-display" class="text-7xl animate-bounce"></div>
+                        <h3 id="emotion-title" class="text-2xl font-bold mt-2 text-teal-300">Neutral</h3>
+                    </div>
+
+                    <div id="bars-container" class="space-y-3 text-left">
+                        </div>
+                </div>
+
+                <div id="idle-message" class="text-center py-20 text-slate-500">
+                    <p class="text-5xl mb-3"></p>
+                    <p class="text-sm">Captura o sube una foto para analizar tus emociones en tiempo real.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-950 p-6 border-t border-slate-800 text-xs text-slate-500">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
+            <div>
+                <p class="font-bold text-slate-400 uppercase tracking-wider mb-2">Desarrolladores (ADSO)</p>
+                <p>Juan Manuel Santa Morales</p>
+                <p>Deivis Samuel Cedeño F. | Emanuel Lara T.</p>
+                <p>Manuel Esteban Sanchez R. | Mateo Dirgua H.</p>
+            </div>
+            <div>
+                <p class="font-bold text-slate-400 uppercase tracking-wider mb-2">Ficha Técnica del Modelo</p>
+                <p>Modelo: OpenCV Haar Cascades + FER Feature Analyzer [cite: 40, 49]</p>
+                <p>Clases: Felicidad, Tristeza, Ira, Sorpresa, Neutral </p>
+                <p>Inferencia: In-Memory (Serverless No-Disk Write) </p>
+            </div>
+            <div class="md:text-right space-y-2">
+                <p class="font-bold text-slate-400 uppercase tracking-wider mb-1">Recursos del Proyecto</p>
+                <a href="#" class="block text-teal-500 hover:underline">Repositorio de GitHub</a>
+                <a href="https://flask.palletsprojects.com/" target="_blank" class="block text-teal-500 hover:underline">Flask Documentation</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

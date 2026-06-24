@@ -1,0 +1,14 @@
+# Servidor web ligero para construir la API en Python
+Flask==3.1.0
+
+# Permite dar permisos de acceso y conexión segura con el Frontend
+flask-cors==4.0.1
+
+# Versión optimizada de OpenCV para servidores (procesamiento de imágenes e Inteligencia Artificial DNN)
+opencv-python-headless==4.10.0.84
+
+# Manejo y cálculo matemático de las imágenes estructuradas como matrices
+numpy==2.1.2
+
+# Manipulación, apertura y conversión de formatos de archivos gráficos
+Pillow==11.0.0
